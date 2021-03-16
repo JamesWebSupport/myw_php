@@ -21,35 +21,44 @@ class Post extends Model
         'user_id',
     ];
 
-    // Post has Many Comments
+    // Post <= morph one to many => Comment
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+    // Post <= many to one => User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // Post <= many to one => Subject
     public function subject()
     {
         return $this->belongsTo(Subject::class);
     }
 
+    // Post <= morpy many to many => Tag
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    // Post <= morpy many to many => Like
     public function likes()
     {
-        return $this->morphToMany(User::class, 'likeable')->whereDeletedAt(null);
+
+        return $this->morphToMany(Like::class, 'likeable');
     }
 
+    // follow
     public function getIsLiked()
     {
-        $like = $this->likes()->whereUserId(Auth::id())->first();
-        return (!is_null($like)) ? true : false;
+        $liked = $this->likes()
+            ->where('user_id', auth()->user()->id)
+            ->first();
+            
+        return ($liked) ? true : false;
     }
 }

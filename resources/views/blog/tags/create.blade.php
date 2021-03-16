@@ -3,7 +3,6 @@
 @section('content')
    <div class="row">
     <div class="col-md-8">
-        <h1>tag Create</h1>
         <form action="" method="POST">
             @csrf
             <div class="form-group">

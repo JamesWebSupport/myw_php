@@ -11,12 +11,12 @@ class Like extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'likes';
+    // protected $table = 'likes';
 
-    protected $fillable = [
-        'user_id',
+    // protected $fillable = [
+    //     'user_id',
 
-    ];
+    // ];
 
     public function posts()
     {

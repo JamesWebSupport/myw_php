@@ -42,10 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function likedPosts()
-    {
-        return $this->morphedByMany(Post::class, 'liked_item')->whereDeleteAt(null);
-    }
+    // public function likedPosts()
+    // {
+    //     return $this->morphedByMany(Post::class, 'liked_item')->whereDeleteAt(null);
+    // }
 
     public function run()
     {

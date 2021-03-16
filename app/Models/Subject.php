@@ -12,8 +12,13 @@ class Subject extends Model
     protected $fillable = [
         'subject',
         'description',
-        
+
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
 
 }

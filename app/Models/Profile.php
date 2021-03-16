@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    //auth()->user()->image
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+    }
 }

@@ -26,8 +26,8 @@ use App\Http\Controllers\DashboardController;
 // Route::get('/', function () {return view('home');})->name('home');
 // Route::get('/home', function () {return view('home');});
 
-Route::get('/aboutme', function() {return view('aboutme');})->name('aboutme');
-Route::get('/contactme', function() {return view('contactme');})->name('contactme');
+// Route::get('/aboutme', function() {return view('aboutme');})->name('aboutme');
+// Route::get('/contactme', function() {return view('contactme');})->name('contactme');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')
 ->name('dashboard');
@@ -60,6 +60,8 @@ Route::get('/post/{id}/delete', [PostController::class, 'destroy'])->name('delet
 
 // Subject
 Route::get('/subject/index',[SubjectController::class, 'index'])->name('list_subject');
+Route::get('/subject/{id}',[SubjectController::class, 'indexBySubject'])->name('list_by_subject');
+
 
 Route::get('/subject/create',[SubjectController::class, 'create'])->name(('create_subject'));
 Route::post('/subject/create',[SubjectController::class, 'store']);
@@ -100,7 +102,7 @@ Route::get('tag/index', [TagController::class, 'index'])->name('show_all_tags');
 
 //Like
 Route::get('/{type}/{id}/like',[LikeController::class, 'likeAction']);
-Route::post('/{type}/{id}/like/',[LikeController::class, 'LikeAction'])->name('like');
+Route::post('/{type}/{id}/like',[LikeController::class, 'LikeAction'])->name('like');
 
 
 #Auth::routes();

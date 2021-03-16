@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/aboutme', function() {return view('aboutme');})->name('aboutme');
+Route::get('/contactme', function() {return view('contactme');})->name('contactme');
+

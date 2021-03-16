@@ -32,4 +32,25 @@ class Comment extends Model
     {
         $this->morphTo();
     }
+
+    // comment <= morph many to many => Like
+    public function likes()
+    {
+        return $this->morphToMany(Like::class, 'likeable');
+    }
+
+    public function getIsLiked()
+    {
+        $liked = $this->likes()
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        return ($liked) ? true : false;
+    }
+
+
+
+
+
+
 }

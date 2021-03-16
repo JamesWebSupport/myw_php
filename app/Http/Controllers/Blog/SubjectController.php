@@ -32,6 +32,20 @@ class SubjectController extends Controller
 
     }
 
+    public function indexBySubject($subject_id)
+    {
+        $selected_subject = Subject::find($subject_id);
+
+        $posts = $selected_subject->posts;
+
+        //dd($posts);
+
+        return view('blog.subjects.indexBySubject', [
+            'subject' => $selected_subject,
+            'posts' => $posts,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
